@@ -44,8 +44,10 @@ Each message is a Discord embed with:
 
 3. In each arr: **Settings → Connect → + → Custom Script**
    - Name: anything (e.g. `Discord (filtered)`)
-   - Triggers: enable **On Import**, **On Upgrade**, and (Sonarr only)
-     **On Import Complete**. Leave everything else off.
+   - Triggers: enable **On Import** and **On Upgrade**. Leave everything
+     else off (including Sonarr's **On Import Complete** — the script
+     handles per-file Download events, and enabling the batch trigger
+     would cause duplicate notifications).
    - Path: absolute path to `notify-discord.sh` as seen from inside the
      container (e.g. `/mnt/storage/arr-notify/notify-discord.sh`).
    - Save. Click **Test** — you should get a confirmation embed in Discord.
