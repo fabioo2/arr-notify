@@ -64,9 +64,11 @@ if [[ "$EVENT" == "Test" ]]; then
 fi
 
 case "$EVENT" in
-    Download|Upgrade|DownloadFolderImported|ImportComplete) ;;
+    Download) ;;
     *) exit 0 ;;
 esac
+
+IS_UPGRADE="${sonarr_isupgrade:-${radarr_isupgrade:-False}}"
 
 # Filter on grab source — only notify for automated grabs
 if [[ -n "$DL_ID" ]]; then
@@ -130,7 +132,7 @@ fi
 OVERVIEW=$(printf '%s' "$OVERVIEW" | first_sentence)
 
 EVENT_LABEL="Imported"
-[[ "$EVENT" == "Upgrade" ]] && EVENT_LABEL="Upgraded"
+[[ "$IS_UPGRADE" == "True" ]] && EVENT_LABEL="Upgraded"
 
 # Assemble the embed
 payload=$(jq -n \
