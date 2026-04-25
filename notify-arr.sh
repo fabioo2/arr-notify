@@ -13,7 +13,7 @@ SONARR_ANIME_COLOR=10181046 # #9B59B6 — purple, Sonarr Anime instance
 RADARR_COLOR=16761904       # #FFC230
 WARN_COLOR=15548997         # #ED4245 — Discord red, used for manual-interaction alerts
 
-ENV_FILE="$(dirname "$0")/notify-discord.env"
+ENV_FILE="$(dirname "$0")/arr-notify.env"
 [[ -f "$ENV_FILE" ]] && source "$ENV_FILE"
 : "${WEBHOOK:?WEBHOOK must be set via $ENV_FILE}"
 
