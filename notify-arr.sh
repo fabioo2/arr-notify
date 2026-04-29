@@ -11,7 +11,7 @@
 
 set -u
 
-WAIT_SECONDS="${WAIT_SECONDS:-900}"   # 15 min default — covers most TV grabs
+WAIT_SECONDS="${WAIT_SECONDS:-600}"   # 10 min default — covers single-episode TV grabs
 
 SONARR_LOGO="https://raw.githubusercontent.com/Sonarr/Sonarr/main/Logo/256.png"
 RADARR_LOGO="https://raw.githubusercontent.com/Radarr/Radarr/develop/Logo/256.png"

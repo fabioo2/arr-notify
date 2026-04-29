@@ -5,7 +5,7 @@ grabs.
 
 `notify-arr.sh` is fired by Sonarr/Radarr's **On Grab** Custom Script
 connection. It filters out manual grabs, sleeps a configurable window
-(default 15 min), and then inspects history + queue to decide what to post:
+(default 10 min), and then inspects history + queue to decide what to post:
 
 - Imported successfully (and not an upgrade) → `Imported`
 - Imported as an upgrade replacing an existing file → silent
@@ -49,7 +49,7 @@ original grab already produced a notification.
    ```
 
    `WEBHOOK` is the only required value. `WAIT_SECONDS` is optional (default
-   900). `notify-arr.sh` reads each instance's API key from
+   600). `notify-arr.sh` reads each instance's API key from
    `/config/config.xml` at runtime since it executes inside the arr container.
 
 3. **In each arr: Settings → Connect → + → Custom Script**
@@ -79,7 +79,7 @@ the script.
 ## How the wait + check works
 
 After the manual-grab filter, the script `sleep`s for `WAIT_SECONDS` (default
-900). The sleeping process is essentially free — bash sits in the kernel wait
+600). The sleeping process is essentially free — bash sits in the kernel wait
 queue with no CPU and ~1 MB resident.
 
 When it wakes:
